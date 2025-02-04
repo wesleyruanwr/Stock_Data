@@ -4,7 +4,7 @@
 
 **-Data Ingestion: Alpha Vantage API, Kafka**
 
-**Processing: Polars**
+**Processing: Polars (Spark will be implemented)**
 
 **Storage: PostgreSQL**
 
