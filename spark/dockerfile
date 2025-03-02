@@ -1,0 +1,13 @@
+FROM bitnami/spark:3.5.0
+USER root
+
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -o /opt/bitnami/spark/jars/postgresql-42.6.0.jar https://jdbc.postgresql.org/download/postgresql-42.6.0.jar && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install requests confluent_kafka
+COPY main.py /spark/main.py
+
+CMD ["spark-submit", "--packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0", "/spark/main.py"]
