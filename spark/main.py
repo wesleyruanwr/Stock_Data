@@ -8,7 +8,7 @@ from pyspark.sql.functions import from_json
 from pyspark.sql.types import StructType, StructField, StringType, DoubleType, TimestampType, IntegerType
 from confluent_kafka import Producer
 
-def create_spark_session():
+def spark_session():
     return SparkSession.builder \
         .appName("StockDataProject") \
         .config("spark.driver.extraJavaOptions", "-Dio.netty.tryReflectionSetAccessible=true") \
@@ -69,7 +69,7 @@ def write_to_postgres(df, epoch_id):
         .save()
 
 if __name__ == "__main__":
-    spark = create_spark_session()
+    spark = spark_session()
     
     try:
         API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
@@ -103,8 +103,7 @@ if __name__ == "__main__":
         query = kafka_df.writeStream \
             .foreachBatch(write_to_postgres) \
             .start()
-        
-        # For demonstration, read some data from PostgreSQL
+        #read some data for demonstration
         postgres_df = spark.read \
             .format("jdbc") \
             .option("url", "jdbc:postgresql://postgres:5432/mydatabase") \
