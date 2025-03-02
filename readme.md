@@ -2,7 +2,7 @@
 
 **TECH STACK:**
 
-**-Data Ingestion: Alpha Vantage API, Kafka**
+**Data Ingestion: Alpha Vantage API, Kafka**
 
 **Processing: Spark (Pyspark)**
 
