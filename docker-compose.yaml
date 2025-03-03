@@ -30,12 +30,12 @@ services:
       - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
 
   spark:
-    build: ./spark
+    build: ./app
     depends_on:
       - kafka
       - postgres
     environment:
-      ALPHAVANTAGE_API_KEY: YOUR_API_KEY
+      ALPHAVANTAGE_API_KEY: 42JIJGRH51L2GBTP
 
 volumes:
   postgres_data:

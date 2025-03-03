@@ -95,6 +95,7 @@ if __name__ == "__main__":
             .format("kafka") \
             .option("kafka.bootstrap.servers", "kafka:9092") \
             .option("subscribe", "stock_data_topic") \
+            .option("startingOffsets", "earliest") \
             .load() \
             .selectExpr("CAST(value AS STRING)") \
             .select(from_json("value", schema).alias("data")) \
