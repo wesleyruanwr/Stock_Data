@@ -8,4 +8,6 @@
 
 **Storage: PostgreSQL**
 
+**Containment: Docker**
+
 **Visualization: Plotly (not defined yet)**
