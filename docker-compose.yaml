@@ -35,7 +35,7 @@ services:
       - kafka
       - postgres
     environment:
-      ALPHAVANTAGE_API_KEY: 42JIJGRH51L2GBTP
+      ALPHAVANTAGE_API_KEY: YOUR_API_KEY
 
 volumes:
   postgres_data:
